@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "battery-level": "^3.0.0",
+    "say": "^0.16.0"
+  }
+}
