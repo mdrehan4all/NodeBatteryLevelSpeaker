@@ -10,7 +10,7 @@ function check(){
         if(level <= 0.2){
             s.speak('Battery low '+parseFloat(level*10).toFixed(2)+' Percent', 'Microsoft Zira Desktop', 1.0);
             //console.log('Low battery '+parseFloat(level*10).toFixed(2)+' Percent');
-        }else if(level >= 0.95){
+        }else if(level >= 1.0){
             s.speak('Battery full '+parseFloat(level*10).toFixed(2)+' Percent', 'Microsoft Zira Desktop', 1.0);
             //console.log('Battery full '+parseFloat(level*10).toFixed(2)+' Percent');
         }
@@ -18,8 +18,7 @@ function check(){
 }
 
 
-//s.speak('Bachao battery low ho gaya hai', 'Microsoft Zira Desktop', 1.2)
-check();
+s.speak('hello, I am your battery', 'Microsoft Zira Desktop', 1.2, ()=>{check();})
 
 setInterval(()=>{
     check();
