@@ -5,20 +5,21 @@ const s = new Say('win32')
 
 function check(){
     batteryLevel().then(level => {
-        console.log('Battery level: '+level);
-        //=> 0.55
+		let currentLevel = parseFloat(level*100).toFixed(0)
+        console.log(`Battery level: ${currentLevel}%`);
+      
         if(level <= 0.2){
-            s.speak('Battery low '+parseFloat(level*10).toFixed(2)+' Percent', 'Microsoft Zira Desktop', 1.0);
-            //console.log('Low battery '+parseFloat(level*10).toFixed(2)+' Percent');
-        }else if(level >= 1.0){
-            s.speak('Battery full '+parseFloat(level*10).toFixed(2)+' Percent', 'Microsoft Zira Desktop', 1.0);
-            //console.log('Battery full '+parseFloat(level*10).toFixed(2)+' Percent');
+            s.speak(`Battery low ${currentLevel} Percent`, 'Microsoft Zira Desktop', 1.0);
+            console.log(`Low battery ${currentLevel} Percent`);
+        }else if(level >= 0.99){
+            s.speak(`Battery full ${currentLevel} Percent`, 'Microsoft Zira Desktop', 1.0);
+            console.log(`Battery full ${currentLevel} Percent`);
         }
     });
 }
 
 
-s.speak('hello, I am your battery', 'Microsoft Zira Desktop', 1.2, ()=>{check();})
+s.speak('hello, I am your battery', 'Microsoft Zira Desktop', 1.0, ()=>{check();})
 
 setInterval(()=>{
     check();
